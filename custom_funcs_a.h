@@ -34,19 +34,19 @@ int _int_max(int n, ...)
 }
 
 /**
- * binary_tree_levels - a helper recursive function to get levels of
- * +nodes in a binary tree, beginning from node's level
+ * binary_tree_height_int - calculates the height of a binary tree
+ * +but returns an int instead of a unsigned int.
  *
  * @tree: pointer to the tree's root
  *
  * Return: number of levels in tree starting from @tree node
  */
-size_t binary_tree_levels(const binary_tree_t *tree)
+int binary_tree_height_int(const binary_tree_t *tree)
 {
 	if (!tree)
-		return (0);
-	return (1 + _int_max(2, binary_tree_levels(tree->left),
-						 binary_tree_levels(tree->right)));
+		return (-1);
+	return (1 + (_int_max(2, binary_tree_height_int(tree->left),
+						  binary_tree_height_int(tree->right))));
 }
 
 #endif /* CUSTOM_FUNCS_A_H */
