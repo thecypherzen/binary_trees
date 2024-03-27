@@ -12,7 +12,7 @@
  * @value: value of the node to insert in new node
  *
  * Return: Pointer to inserted node on success \
- * 		   NULL if malloc fails or parent is NULL
+ *		   NULL if malloc fails or parent is NULL
  */
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
