@@ -11,22 +11,22 @@
  */
 int _int_max(int n, ...)
 {
-    int max = INT_MIN, i, next;
+	int max = INT_MIN, i, next;
 
-    if (n)
-    {
-        va_list numbers;
+	if (n)
+	{
+		va_list numbers;
 
-        va_start(numbers, n);
-        for (i = 0; i < n; i++)
-        {
-            next = va_arg(numbers, int);
-            if (next > max)
-                max = next;
-        }
-        va_end(numbers);
-    }
-    return (max);
+		va_start(numbers, n);
+		for (i = 0; i < n; i++)
+		{
+			next = va_arg(numbers, int);
+			if (next > max)
+				max = next;
+		}
+		va_end(numbers);
+	}
+	return (max);
 }
 
 
@@ -40,10 +40,10 @@ int _int_max(int n, ...)
  */
 int binary_tree_height_int(const binary_tree_t *tree)
 {
-    if (!tree)
-        return (-1);
-    return (1 + (_int_max(2, binary_tree_height_int(tree->left),
-                          binary_tree_height_int(tree->right))));
+	if (!tree)
+		return (-1);
+	return (1 + (_int_max(2, binary_tree_height_int(tree->left),
+						  binary_tree_height_int(tree->right))));
 }
 
 
