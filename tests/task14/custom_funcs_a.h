@@ -2,7 +2,6 @@
 #define _CUSTOM_FUNCS_A_H
 
 #include <stdarg.h>
-#include <limits.h>
 
 /**
  * _int_max - a function that returns the maximum between integers
@@ -15,7 +14,7 @@
  */
 int _int_max(int n, ...)
 {
-	int max = INT_MIN, i, next;
+	int max = -2147483648, i, next;
 
 	if (n)
 	{
