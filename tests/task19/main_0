@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -35,7 +36,7 @@ int main(void)
 	root->left->left->right = binary_tree_node(root->left->left, 45);
 
 	first = root->right;
-	second = root->right;
+	second = root->right->right->right;
 	ancestor = binary_trees_ancestor(first, second);
 	printf("Lowest common ancestor of (%d) and (%d) is: ", first->n, second->n);
 	if (ancestor)

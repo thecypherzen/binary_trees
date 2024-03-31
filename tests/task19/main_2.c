@@ -50,10 +50,10 @@ int main(void)
 	binary_tree_insert_right(root->right->left->left, 18);
     binary_tree_print(root);
 
-    launch_test(root->right, root->left);
-    launch_test(root->right->right->right, root->right->left);
-    launch_test(root->right->right->right, root->right->right);
+    launch_test(root->left, root->right);
+    launch_test(root->right->left, root->right->right->right);
+    launch_test(root->right->right, root->right->right->right);
 	launch_test(root->right->right, root->right->right);
-	launch_test(root->left->left, root->left->right);
+	launch_test(root->left->right, root->left->left);
     return (0);
 }
