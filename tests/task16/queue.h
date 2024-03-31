@@ -1,6 +1,13 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+/**
+ * struct queue_s - a struct defining a quque data type
+ *
+ * @tree: pointer to binary_tree node it holds
+ * @next: pointer to next queue node
+ * @prev: pointer to previous queue node
+ */
 typedef struct queue_s
 {
 	const binary_tree_t *tree;
@@ -8,11 +15,20 @@ typedef struct queue_s
 	struct queue_s *prev;
 } queue_t;
 
+
+/**
+ * queue_push - adds a binary_tree node to the queue
+ *
+ * @queue: ponter to head of the queue
+ * @tree: pointer to binary tree node
+ *
+ * Return: void
+ */
 void queue_push(queue_t **queue, const binary_tree_t *tree)
 {
 	queue_t *temp, *new_node;
 
-	if (!queue || !tree)
+	if (!queue)
 		return;
 
 	new_node = malloc(sizeof(queue_t));
@@ -34,17 +50,34 @@ void queue_push(queue_t **queue, const binary_tree_t *tree)
 	temp->next = new_node;
 }
 
+/**
+ * print_queue - prints all items on the queue
+ *
+ * @head: pointer to queue head
+ *
+ * Return: void
+ */
 void print_queue(queue_t *head)
 {
 	queue_t *temp = head;
 
+	printf("  [queue]:");
 	while (temp)
 	{
-		printf("%d\n", temp->tree->n);
+		printf("  %d", temp->tree ? temp->tree->n : -99);
 		temp = temp->next;
 	}
+	printf("\n");
 }
 
+
+/**
+ * queue_free - frees all memory used by queue
+ *
+ * @queue: pointer to queue head pointer
+ *
+ * Return: void
+ */
 void queue_free(queue_t **queue)
 {
 	queue_t *temp;
@@ -55,11 +88,21 @@ void queue_free(queue_t **queue)
 	while (*queue)
 	{
 		temp = (*queue)->next;
+		(*queue)->next = NULL;
 		free(*queue);
 		*queue = temp;
 	}
+	*queue = NULL;
 }
 
+/**
+ * queue_pop - removes an item from the queue's end
+ *
+ * @queue: pointer to queue head pointer
+ *
+ * Return: pointer to removed queue item
+ *		   NULL if NULL value is passed
+ */
 queue_t *queue_pop(queue_t **queue)
 {
 	queue_t *temp;
@@ -75,4 +118,19 @@ queue_t *queue_pop(queue_t **queue)
 
 	return (temp);
 }
+
+
+/**
+ * discard_queue_node - discards a queue node
+ * @queue_node: pointer to the queue node's head
+ * Return: void
+ */
+void discard_queue_node(queue_t **queue_node)
+{
+    if (!(*queue_node) || !queue_node)
+        return;
+    (*queue_node)->next = NULL;
+    queue_free(queue_node);
+}
+
 #endif /* QUEUE_H */
