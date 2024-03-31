@@ -2,7 +2,6 @@
 #define _CUSTOM_FUNCS_A_H
 
 #include <stdarg.h>
-#include <limits.h>
 
 /**
  * _int_max - a function that returns the maximum between integers
@@ -15,7 +14,7 @@
  */
 int _int_max(int n, ...)
 {
-	int max = INT_MIN, i, next;
+	int max = -2147483648, i, next;
 
 	if (n)
 	{
@@ -43,10 +42,13 @@ int _int_max(int n, ...)
  */
 int binary_tree_height_int(const binary_tree_t *tree)
 {
+	int height_left, height_right;
+
 	if (!tree)
 		return (-1);
-	return (1 + (_int_max(2, binary_tree_height_int(tree->left),
-						  binary_tree_height_int(tree->right))));
+	height_left = binary_tree_height_int(tree->left);
+	height_right = binary_tree_height_int(tree->right);
+	return (height_left >= height_right ? height_left + 1 : height_right + 1);
 }
 
 #endif /* CUSTOM_FUNCS_A_H */
