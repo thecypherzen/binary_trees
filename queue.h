@@ -28,7 +28,7 @@ void queue_push(queue_t **queue, const binary_tree_t *tree)
 {
 	queue_t *temp, *new_node;
 
-	if (!queue || !tree)
+	if (!queue)
 		return;
 
 	new_node = malloc(sizeof(queue_t));
@@ -61,13 +61,13 @@ void print_queue(queue_t *head)
 {
 	queue_t *temp = head;
 
-	printf("========== [queue] ==========\n");
+	printf("  [queue]:");
 	while (temp)
 	{
-		printf("%d\n", temp->tree->n);
+		printf("  %d", temp->tree ? temp->tree->n : -99);
 		temp = temp->next;
 	}
-	printf("==========================\n");
+	printf("\n");
 }
 
 
@@ -118,4 +118,19 @@ queue_t *queue_pop(queue_t **queue)
 
 	return (temp);
 }
+
+
+/**
+ * discard_queue_node - discards a queue node
+ * @queue_node: pointer to the queue node's head
+ * Return: void
+ */
+void discard_queue_node(queue_t **queue_node)
+{
+    if (!(*queue_node) || !queue_node)
+        return;
+    (*queue_node)->next = NULL;
+    queue_free(queue_node);
+}
+
 #endif /* QUEUE_H */
