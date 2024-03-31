@@ -22,10 +22,12 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 
 	if (first == second)
 		return (first->left->parent);
-	if (first->parent == second)
-		return (first->parent);
-	if (second->parent == first)
-		return (second->parent);
+	/**
+	 *if (first->parent == second)
+	 *	return (first->parent);
+	 *if (second->parent == first)
+	 *return (second->parent);
+	 */
 
 	current = first->parent;
 	while (current)
