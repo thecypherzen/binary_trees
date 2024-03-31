@@ -47,16 +47,3 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	queue_free(&queue);
 	return (0);
 }
-
-/**
- * discard_queue_node - discards a queue node
- * @queue_node: pointer to the queue node's head
- * Return: void
- */
-void discard_queue_node(queue_t **queue_node)
-{
-	if (!(*queue_node) || !queue_node)
-		return;
-	(*queue_node)->next = NULL;
-	queue_free(queue_node);
-}

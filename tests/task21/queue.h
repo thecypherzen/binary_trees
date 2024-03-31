@@ -119,5 +119,18 @@ queue_t *queue_pop(queue_t **queue)
 	return (temp);
 }
 
-void discard_queue_node(queue_t **queue_node);
+
+/**
+ * discard_queue_node - discards a queue node
+ * @queue_node: pointer to the queue node's head
+ * Return: void
+ */
+void discard_queue_node(queue_t **queue_node)
+{
+    if (!(*queue_node) || !queue_node)
+        return;
+    (*queue_node)->next = NULL;
+    queue_free(queue_node);
+}
+
 #endif /* QUEUE_H */
