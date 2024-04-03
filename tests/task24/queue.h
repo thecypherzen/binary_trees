@@ -128,20 +128,12 @@ queue_t *queue_pop(queue_t **queue)
  */
 void discard_queue_node(queue_t **queue_node)
 {
-	if (!(*queue_node) || !queue_node)
-		return;
-	(*queue_node)->next = NULL;
-	queue_free(queue_node);
+    if (!(*queue_node) || !queue_node)
+        return;
+    (*queue_node)->next = NULL;
+    queue_free(queue_node);
 }
 
-/**
- * val_in_queue - checks if a value is in queue
- *
- * @queue: pointer to queue's head
- * @val: the value to check if in queue
- *
- * Return: 1 if in queue, 0 otherwise
- */
 int val_in_queue(queue_t **queue, int val)
 {
 	queue_t *temp;
