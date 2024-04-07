@@ -18,6 +18,17 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	return (is_avl_helper(tree));
 }
 
+
+/**
+ * is_avl_helper - helps to validate a binary tree is avl
+ *
+ * necessary to check for leaves where it returns 1 as against the
+ * required 0 in binary_tree_is_avl
+ *
+ * @tree: root node of tree
+ *
+ * Return: 1 if tree is avl, 0 otherwise
+ */
 int is_avl_helper(const binary_tree_t *tree)
 {
 	int is_bst, h_left, h_right, diff, is_avl;
